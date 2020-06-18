@@ -164,6 +164,8 @@ public class PrimaryKeyChangeListController implements Initializable, DataChange
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewPrimaryKeyChange.prefHeightProperty().bind(stage.heightProperty());
 
+		//tableViewPrimaryKeyChange.prefWidthProperty().bind(stage.widthProperty());
+
 		initializecomboBoxParametro();
 	}
 	
