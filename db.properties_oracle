@@ -1,0 +1,4 @@
+user=fiscal
+password=FISCALSTMAKRO
+dburl=jdbc:oracle:thin:@10.52.234.232:1521:P_MSTSAF
+useSSL=false

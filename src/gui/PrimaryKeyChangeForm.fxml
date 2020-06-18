@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="495.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PrimaryKeyChangeFormController">
+   <children>
+      <GridPane layoutX="14.0" layoutY="13.0" prefHeight="469.0" prefWidth="637.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="179.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="143.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="225.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Empresa" />
+            <Label text="Estabelecimento" GridPane.rowIndex="1" />
+            <Label text="Data Fiscal" GridPane.rowIndex="2" />
+            <Label text="Data Emissão" GridPane.rowIndex="3" />
+            <Label text="Movto E/S" GridPane.rowIndex="4" />
+            <Label text="Norm/Dev" GridPane.rowIndex="5" />
+            <Label text="Fis/Jur" GridPane.rowIndex="6" />
+            <Label text="Numero" GridPane.rowIndex="7" />
+            <Label text="Serie" GridPane.rowIndex="8" />
+            <Label text="Sub Serie" GridPane.rowIndex="9" />
+            <TextField fx:id="txtCod_empresa" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCod_estab" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpData_fiscal" editable="false" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dpData_emissao" editable="false" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtMovto_e_s" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtNorm_dev" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtCod_fis_jur" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="txtNum_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="txtSerie_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="txtSub_Serie_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="Empresa Ajuste" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Estabelecimento Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Data Fiscal Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Data Emissao Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Movto E/S Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Norm/Dev Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Fis/Jur Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Numero Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Serie Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Sub Serie Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Cassificação Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Tipo Documento Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Modelo Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Modelo Cotepe Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Chave Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtCod_empresa_aj" GridPane.columnIndex="3" />
+            <TextField fx:id="txtCod_estab_aj" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpData_fiscal_aj" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dpData_emissao_aj" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="txtMovto_e_s_aj" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="txtNorm_dev_aj" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="txtCod_fis_jur_aj" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="txtNum_docfis_aj" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <TextField fx:id="txtSerie_docfis_aj" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <TextField fx:id="txtSub_Serie_docfis_aj" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <TextField fx:id="txtCod_class_docfis_aj" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+            <TextField fx:id="txtCod_docto_aj" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <TextField fx:id="txtCod_modelo_aj" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+            <TextField fx:id="txtCod_modelo_cotepe_aj" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+            <TextField fx:id="txtNum_autentic_nfe_aj" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+               <children>
+                  <Button fx:id="btSave" mnemonicParsing="false" onAction="#onBtSaveAction" text="Save" />
+                  <Button fx:id="btCancel" mnemonicParsing="false" onAction="#onBtCancelAction" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
