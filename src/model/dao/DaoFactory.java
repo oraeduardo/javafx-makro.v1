@@ -3,6 +3,7 @@ package model.dao;
 import db.DBOracle;
 import model.dao.impl.ParametroDaoJDBC;
 import model.dao.impl.PrimaryKeyChangeDaoJDBC;
+import model.dao.impl.UserDaoJDBC;
 
 public class DaoFactory {
 
@@ -19,6 +20,10 @@ public class DaoFactory {
 	//Conexão com banco de dados Oracle
 	public static ParametroDao createLojaDao() {
 		return new ParametroDaoJDBC(DBOracle.getConnection());
+	}
+	
+	public static UserDao createUserDao() {
+		return new UserDaoJDBC(DBOracle.getConnection());
 	}
 
 }

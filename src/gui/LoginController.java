@@ -11,15 +11,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.entities.User;
-import model.services.UserService;
+import model.entities.Login;
+import model.services.LoginService;
 
-public class UserController implements Initializable {
+public class LoginController implements Initializable {
 	
-	private User user;
+	private Login user;
 	
-	private UserService userService;
+	private LoginService userService;
 	
 	private LoggedListener loggedListeners;
 	
@@ -27,7 +28,7 @@ public class UserController implements Initializable {
 	private TextField txtUser;
 	
 	@FXML
-	private TextField pwdPassword;
+	private PasswordField pwdPassword;
 	
 	@FXML
 	private Button btOk;
@@ -54,7 +55,7 @@ public class UserController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
-	public void setUserService(UserService userService) {
+	public void setUserService(LoginService userService) {
 		this.userService = userService;
 	}
 
@@ -67,8 +68,8 @@ public class UserController implements Initializable {
 	    return userService.findUser(user); 
 	}
 	
-	public User getFormData() {
-		User user = new User();
+	public Login getFormData() {
+		Login user = new Login();
 		
 		user.setUser(txtUser.getText());
 	    user.setPassword(pwdPassword.getText());

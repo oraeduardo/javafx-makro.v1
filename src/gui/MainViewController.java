@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.LoginService;
 import model.services.ParametroService;
 import model.services.PrimaryKeyChangeService;
 import model.services.UserService;
@@ -34,12 +35,15 @@ public class MainViewController implements Initializable, LoggedListener{
 	private MenuItem menuItemClose;
 
 	@FXML
+	private MenuItem menuItemUser;
+	
+	@FXML
 	private MenuItem menuAbout;
 
 	@FXML
 	public void onMenuItemLoginAction(ActionEvent event) {
-		loadView("/gui/User.fxml", (UserController controller) -> {
-			controller.setUserService(new UserService());
+		loadView("/gui/Login.fxml", (LoginController controller) -> {
+			controller.setUserService(new LoginService());
 			controller.subscribeLoggedListener(this);
 		});
 	}
@@ -61,6 +65,14 @@ public class MainViewController implements Initializable, LoggedListener{
 		Main.getMainStage().close();
 	}
 
+	@FXML
+	public void onMenuItemUserAction() {
+		loadView("/gui/UserList.fxml", (UserListController controller) -> {
+			controller.setUserService(new UserService());
+			controller.updateTableView();
+		});
+	}
+	
 	@FXML
 	public void onMenuItemAboutAction() {
 		loadView("/gui/About.fxml", x -> {
