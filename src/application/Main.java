@@ -25,14 +25,14 @@ public class Main extends Application {
 			//Parent parent = loader.load();
 			//Scene mainScene = new Scene(parent);
 			
-			//Trocado o Parent pelo ScrollPane conforme MainView do sceneBuilder 
-			ScrollPane scrollPane = loader.load();
+			//Trocado o Parent pelo ScrollPane conforme MainView do sceneBuilder
+			ScrollPane scrollpane = loader.load();
 			
 			//Deixar o scrollPane com a mesma dimenssão da cena.
-			scrollPane.setFitToHeight(true);
-			scrollPane.setFitToWidth(true);
+			scrollpane.setFitToHeight(true);
+			scrollpane.setFitToWidth(true);
 			
-			mainScene = new Scene(scrollPane,900,500);
+			mainScene = new Scene(scrollpane,900,500);
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Sample JavaFX application");
 			primaryStage.show();
@@ -41,7 +41,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static Scene getMainScene() {
 		return mainScene;
 	}
