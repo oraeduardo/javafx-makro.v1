@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +49,34 @@ public class UserDaoJDBC implements UserDao {
 	}
 
 	@Override
+	public User findByName(String name) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+					"SELECT * FROM fiscal.tab_user WHERE name = ? and rownum = 1");
+			st.setString(1, name);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				User obj = new User();
+				obj.setId(rs.getInt("user_id"));
+				obj.setName(rs.getString("Name"));
+				obj.setPassword(rs.getString("password"));
+				obj.setAdmin(rs.getString("admin"));
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+	}
+	
+	@Override
 	public List<User> findAll() {
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -76,21 +103,20 @@ public class UserDaoJDBC implements UserDao {
 			DB.closeResultSet(rs);
 		}
 	}
-
+	
 	@Override
 	public void insert(User obj) {
+		String generatedColumns[] = { "user_id" };		
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-					"INSERT INTO fiscal.tab_user " +
-							"(name) " +
-							"(password) " +
-							"(admin) " +
-							"VALUES " +
-							"(?)" +
-							"(?)" +
-							"(?)",
-					Statement.RETURN_GENERATED_KEYS);
+			st = conn.prepareStatement("INSERT INTO fiscal.tab_user "
+							+ "(name, password, admin) "
+							+ "VALUES "
+							+ "(?, ?, ?)", generatedColumns);
+				//Statement.RETURN_GENERATED_KEYS); 
+			    //Esse comando para o ORACLE retorno o rowid da tabela e não a primeira coluna
+			    //Para resolver o problema foi criado a variavel generatedColumns 
+			    //cujo valor é o campo a ser retornado.
 			st.setString(1, obj.getName());
 			st.setString(2, obj.getPassword());
 			st.setString(3, obj.getAdmin());
@@ -123,7 +149,7 @@ public class UserDaoJDBC implements UserDao {
 							"SET name = ?, " +
 							"    password = ?, " +
 							"    admin = ? " +
-							"WHERE id = ?");
+							"WHERE user_id = ?");
 			st.setString(1, obj.getName());
 			st.setString(2, obj.getPassword());
 			st.setString(3, obj.getAdmin());
@@ -143,7 +169,7 @@ public class UserDaoJDBC implements UserDao {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"DELETE FROM fiscal.tab_user WHERE id = ?");
+					"DELETE FROM fiscal.tab_user WHERE user_id = ?");
 			st.setInt(1, id);
 			st.executeUpdate();
 		}

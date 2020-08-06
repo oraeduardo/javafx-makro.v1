@@ -18,14 +18,14 @@ import model.services.LoginService;
 
 public class LoginController implements Initializable {
 	
-	private Login user;
+	private Login login;
 	
-	private LoginService userService;
+	private LoginService loginService;
 	
 	private LoggedListener loggedListeners;
 	
 	@FXML
-	private TextField txtUser;
+	private TextField txtName;
 	
 	@FXML
 	private PasswordField pwdPassword;
@@ -55,26 +55,26 @@ public class LoginController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
-	public void setUserService(LoginService userService) {
-		this.userService = userService;
+	public void setUserService(LoginService loginService) {
+		this.loginService = loginService;
 	}
 
 	public Boolean logged() {
-		if (userService == null) {
-			throw new IllegalStateException("UserService was null!");
+		if (loginService == null) {
+			throw new IllegalStateException("LoginService was null!");
 		}
 		
-        user = getFormData();
-	    return userService.findUser(user); 
+        login = getFormData();
+	    return loginService.findLogin(login); 
 	}
 	
 	public Login getFormData() {
-		Login user = new Login();
+		Login login = new Login();
 		
-		user.setUser(txtUser.getText());
-	    user.setPassword(pwdPassword.getText());
+		login.setName(txtName.getText());
+	    login.setPassword(pwdPassword.getText());
 	    
-	    return user;
+	    return login;
 	}
 	
 	public void subscribeLoggedListener(LoggedListener listener) {
@@ -85,5 +85,4 @@ public class LoginController implements Initializable {
 		LoggedListener listener = loggedListeners;
 		listener.onLogged(x);
 	}
-
 }

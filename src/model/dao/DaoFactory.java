@@ -1,6 +1,7 @@
 package model.dao;
 
 import db.DBOracle;
+import model.dao.impl.LoginDaoJDBC;
 import model.dao.impl.ParametroDaoJDBC;
 import model.dao.impl.PrimaryKeyChangeDaoJDBC;
 import model.dao.impl.UserDaoJDBC;
@@ -26,4 +27,8 @@ public class DaoFactory {
 		return new UserDaoJDBC(DBOracle.getConnection());
 	}
 
+	public static LoginDao createLoginDao() {
+		return new LoginDaoJDBC(DBOracle.getConnection());
+	}
+	
 }

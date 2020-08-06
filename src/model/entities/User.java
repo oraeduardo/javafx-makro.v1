@@ -52,7 +52,7 @@ public class User implements Serializable {
 	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

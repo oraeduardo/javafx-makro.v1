@@ -17,6 +17,11 @@ public class PrimaryKeyChange implements Serializable {
 	private String num_docfis;
 	private String serie_docfis;
 	private String sub_serie_docfis;
+	private String cod_class_docfis;
+	private String cod_docto;
+	private String cod_modelo;
+	private String cod_modelo_cotepe;
+	private String num_autentic_nfe;
 	private String cod_empresa_aj;
 	private String cod_estab_aj;
 	private Date data_fiscal_aj;
@@ -46,6 +51,11 @@ public class PrimaryKeyChange implements Serializable {
 			                String num_docfis, 
 			                String serie_docfis, 
 			                String sub_serie_docfis,
+			                String cod_class_docfis, 
+			                String cod_docto, 
+			                String cod_modelo,
+			                String cod_modelo_cotepe, 
+			                String num_autentic_nfe,
 			                String cod_empresa_aj, 
 			                String cod_estab_aj, 
 			                Date data_fiscal_aj, 
@@ -71,6 +81,11 @@ public class PrimaryKeyChange implements Serializable {
 		this.num_docfis = num_docfis;
 		this.serie_docfis = serie_docfis;
 		this.sub_serie_docfis = sub_serie_docfis;
+		this.cod_class_docfis = cod_class_docfis;
+		this.cod_docto = cod_docto;
+		this.cod_modelo = cod_modelo;
+		this.cod_modelo_cotepe = cod_modelo_cotepe;
+		this.num_autentic_nfe = num_autentic_nfe;
 		this.cod_empresa_aj = cod_empresa_aj;
 		this.cod_estab_aj = cod_estab_aj;
 		this.data_fiscal_aj = data_fiscal_aj;
@@ -166,6 +181,46 @@ public class PrimaryKeyChange implements Serializable {
 
 	public void setSub_serie_docfis(String sub_serie_docfis) {
 		this.sub_serie_docfis = sub_serie_docfis;
+	}
+
+	public String getCod_class_docfis() {
+		return cod_class_docfis;
+	}
+
+	public void setCod_class_docfis(String cod_class_docfis) {
+		this.cod_class_docfis = cod_class_docfis;
+	}
+	
+	public String getCod_docto() {
+		return cod_docto;
+	}
+	
+	public void setCod_docto(String cod_docto) {
+		this.cod_docto = cod_docto;
+	}
+	
+	public String getCod_modelo() {
+		return cod_modelo;
+	}
+	
+	public void setCod_modelo(String cod_modelo) {
+		this.cod_modelo = cod_modelo;
+	}
+	
+	public String getCod_modelo_cotepe() {
+		return cod_modelo_cotepe;
+	}
+	
+	public void setCod_modelo_cotepe(String cod_modelo_cotepe) {
+		this.cod_modelo_cotepe = cod_modelo_cotepe;
+	}
+	
+	public String getNum_autentic_nfe() {
+		return num_autentic_nfe;
+	}
+	
+	public void setNum_autentic_nfe(String num_autentic_nfe) {
+		this.num_autentic_nfe = num_autentic_nfe;
 	}
 
 	public String getCod_empresa_aj() {

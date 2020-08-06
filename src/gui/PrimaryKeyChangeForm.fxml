@@ -50,6 +50,11 @@
             <Label text="Numero" GridPane.rowIndex="7" />
             <Label text="Serie" GridPane.rowIndex="8" />
             <Label text="Sub Serie" GridPane.rowIndex="9" />
+            <Label text="Classificação" GridPane.rowIndex="10" />
+            <Label text="Tipo Documento" GridPane.rowIndex="11" />
+            <Label text="Modelo" GridPane.rowIndex="12" />
+            <Label text="Modelo Copete" GridPane.rowIndex="13" />
+            <Label text="Chave" GridPane.rowIndex="14" />
             <TextField fx:id="txtCod_empresa" editable="false" GridPane.columnIndex="1" />
             <TextField fx:id="txtCod_estab" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="dpData_fiscal" editable="false" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -60,6 +65,11 @@
             <TextField fx:id="txtNum_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="txtSerie_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="txtSub_Serie_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="txtCod_class_docfis" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="txtCod_docto" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="txtCod_modelo" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField fx:id="txtCod_modelo_cotepe" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <TextField fx:id="txtNum_autentic_nfe" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             <Label text="Empresa Ajuste" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -110,7 +120,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Cassificação Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="10">
+            <Label text="Classificação Ajuste" GridPane.columnIndex="2" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

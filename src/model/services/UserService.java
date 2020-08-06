@@ -19,6 +19,14 @@ public class UserService {
 		return list;*/
 		return dao.findAll();
 	}
+
+	public User findById(Integer Id) {
+		return dao.findById(Id);
+	}
+	
+	public User findByName(String name) {
+		return dao.findByName(name);
+	}
 	
 	public void saveOrUpdate(User obj) {
 		if (obj.getId() == null) {

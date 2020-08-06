@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -54,7 +55,7 @@ public class UserFormController implements Initializable {
 	private Label labelErrorPasswordConfirmation;
 	
 	@FXML
-	private TextField chkAdmin;
+	private CheckBox chkAdmin;
 
 	@FXML
 	private Button btSave;
@@ -84,9 +85,13 @@ public class UserFormController implements Initializable {
 		}
 		try {
 			entity = getFormData();
-			service.saveOrUpdate(entity);
-			notifyDataChangeListeners();
-			Utils.currentStage(event).close();
+			if (service.findByName(entity.getName().trim()) == null ) {
+				service.saveOrUpdate(entity);
+				notifyDataChangeListeners();
+				Utils.currentStage(event).close();
+			} else {
+				Alerts.showAlert("IOException", null, "Login already exists", AlertType.ERROR);
+			}
 		} 
 		catch (ValidationException e) {
 			setErrorMessages(e.getErrors());
@@ -94,7 +99,6 @@ public class UserFormController implements Initializable {
 		catch (DbException e) {
 			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
 		}
-
 	}
 
 	private void notifyDataChangeListeners() {
@@ -120,11 +124,20 @@ public class UserFormController implements Initializable {
 		}
 		obj.setPassword(pwdPassword.getText());
 
-//		if (pwdPasswordConfirmation.getText() == null || pwdPasswordConfirmation.getText().trim().equals("")) {
-//			exception.addErrors("passwordconfirmation", "Field can't be empty");
-//		}
-//		obj.setPassword(pwdPasswordConfirmation.getText());
+		if (pwdPasswordConfirmation.getText() == null || pwdPasswordConfirmation.getText().trim().equals("")) {
+			exception.addErrors("passwordconfirmation", "Field can't be empty");
+		}
+		
+		if (! pwdPassword.getText().equals(pwdPasswordConfirmation.getText())) {
+			exception.addErrors("passwordconfirmation", "Password does not match");
+		}
 
+		if (chkAdmin.isSelected()) {
+			obj.setAdmin("S");
+		} else {
+			obj.setAdmin("N");
+		}
+		
 		if (exception.getErrors().size() > 0) {
 			throw exception;
 		}
@@ -156,22 +169,35 @@ public class UserFormController implements Initializable {
 		txtId.setText(String.valueOf(entity.getId()));
 		txtName.setText(entity.getName());
 		pwdPassword.setText(entity.getPassword());
-		//chkAdmin set(entity.getAdmin());
+		pwdPasswordConfirmation.setText(entity.getPassword());
+		if (entity.getAdmin() == null) {
+			chkAdmin.setSelected(false);
+		} else {
+			if (entity.getAdmin().equals("S")) {
+				chkAdmin.setSelected(true);
+			} else {
+				chkAdmin.setSelected(false);
+			}
+		}
 	}
 	
 	private void setErrorMessages(Map<String, String> errors) {
 		Set<String> fields = errors.keySet();
 		
+		labelErrorName.setText("");
+		labelErrorPassword.setText("");
+		labelErrorPasswordConfirmation.setText("");
+
 		if (fields.contains("name")) {
 			labelErrorName.setText(errors.get("name"));
 		}
 
 		if (fields.contains("password")) {
-			labelErrorName.setText(errors.get("password"));
+			labelErrorPassword.setText(errors.get("password"));
 		}
 		
 		if (fields.contains("passwordconfirmation")) {
-			labelErrorName.setText(errors.get("passwordconfirmation"));
+			labelErrorPasswordConfirmation.setText(errors.get("passwordconfirmation"));
 		}
 	}
 

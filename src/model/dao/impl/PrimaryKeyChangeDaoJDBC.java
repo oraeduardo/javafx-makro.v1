@@ -68,6 +68,11 @@ public class PrimaryKeyChangeDaoJDBC implements PrimaryKeyChangeDao {
 				obj.setNum_docfis(rs.getString("num_docfis"));
 				obj.setSerie_docfis(rs.getString("serie_docfis"));
 				obj.setSub_serie_docfis(rs.getString("sub_serie_docfis"));
+				obj.setCod_class_docfis(rs.getString("cod_class_docfis"));
+				obj.setCod_docto(rs.getString("cod_docto"));
+				obj.setCod_modelo(rs.getString("cod_modelo"));
+				obj.setCod_modelo_cotepe(rs.getString("cod_modelo_cotepe"));
+				obj.setNum_autentic_nfe(rs.getString("num_autentic_nfe"));
 				obj.setCod_empresa_aj(rs.getString("cod_empresa_aj"));
 				obj.setCod_estab_aj(rs.getString("cod_estab_aj"));
 				obj.setData_fiscal_aj(new java.util.Date(rs.getDate("data_fiscal_aj").getTime()));
@@ -108,6 +113,11 @@ public class PrimaryKeyChangeDaoJDBC implements PrimaryKeyChangeDao {
 		obj.setNum_docfis(rs.getString("num_docfis"));
 		obj.setSerie_docfis(rs.getString("serie_docfis"));
 		obj.setSub_serie_docfis(rs.getString("sub_serie_docfis"));
+		obj.setCod_class_docfis(rs.getString("cod_class_docfis"));
+		obj.setCod_docto(rs.getString("cod_docto"));
+		obj.setCod_modelo(rs.getString("cod_modelo"));
+		obj.setCod_modelo_cotepe(rs.getString("cod_modelo_cotepe"));
+		obj.setNum_autentic_nfe(rs.getString("num_autentic_nfe"));
 		obj.setCod_empresa_aj(rs.getString("cod_empresa_aj"));
 		obj.setCod_estab_aj(rs.getString("cod_estab_aj"));
 		if (rs.getTimestamp("data_fiscal_aj") == null) {
@@ -140,35 +150,56 @@ public class PrimaryKeyChangeDaoJDBC implements PrimaryKeyChangeDao {
 		ResultSet rs = null;
 		try {
 			st = conn.prepareStatement(
-					"select cod_empresa,           " + 
-					"		cod_estab,             " + 
-					"		data_fiscal,           " + 
-					"		data_emissao,          " + 
-					"		movto_e_s,             " + 
-					"		norm_dev,              " + 
-					"		cod_fis_jur,           " + 
-					"		num_docfis,            " + 
-					"		serie_docfis,          " + 
-					"		sub_serie_docfis,      " + 
-					"		cod_empresa_aj,        " + 
-					"		cod_estab_aj,          " + 
-					"		data_fiscal_aj,        " + 
-					"		data_emissao_aj,       " + 
-					"		movto_e_s_aj,          " + 
-					"		norm_dev_aj,           " + 
-					"		cod_fis_jur_aj,        " + 
-					"		num_docfis_aj,         " + 
-					"		serie_docfis_aj,       " + 
-					"		sub_serie_docfis_aj,   " + 
-					"		cod_class_docfis_aj,   " + 
-					"		cod_docto_aj,          " + 
-					"		cod_modelo_aj,         " + 
-					"		cod_modelo_cotepe_aj,  " + 
-					"		num_autentic_nfe_aj    " +
-					"  from fiscal.tab_aux_ajuste_campos_chave " +
-					" where cod_empresa = ?        " +
-					"   and cod_estab   = ?        " +
-					" order by cod_estab");
+					"select x.cod_empresa,          " +
+					"       x.cod_estab,            " +
+			        "       x.data_fiscal,          " +    
+			        "       x.data_emissao,         " +
+			        "       x.movto_e_s,            " +
+			        "       x.norm_dev,             " +
+			        "       x.cod_fis_jur,          " +
+			        "       x.num_docfis,           " +
+			        "       x.serie_docfis,         " +
+			        "       x.sub_serie_docfis,     " +
+			        "       y.cod_class_doc_fis as cod_class_docfis, " +
+			        "       x2005.cod_docto,        " +
+			        "       x2024.cod_modelo,       " +
+			        "       y.cod_modelo_cotepe,    " +
+			        "       y.num_autentic_nfe,     " +
+			        "       x.cod_empresa_aj,       " +
+			        "       x.cod_estab_aj,         " +
+			        "       x.data_fiscal_aj,       " +
+			        "       x.data_emissao_aj,      " +
+			        "       x.movto_e_s_aj,         " +
+			        "       x.norm_dev_aj,          " +
+			        "       x.cod_fis_jur_aj,       " +
+			        "       x.num_docfis_aj,        " +
+			        "       x.serie_docfis_aj,      " +
+			        "       x.sub_serie_docfis_aj,  " +
+			        "       x.cod_class_docfis_aj,  " +
+			        "       x.cod_docto_aj,         " +
+			        "       x.cod_modelo_aj,        " +
+			        "       x.cod_modelo_cotepe_aj, " +
+			        "       x.num_autentic_nfe_aj   " +
+			        "  from fiscal.tab_aux_ajuste_campos_chave x   " +
+			        " inner join msaf.x04_pessoa_fis_jur p         " +
+			        "    on p.cod_fis_jur        = x.cod_fis_jur   " +
+			        " inner join msaf.x07_docto_fiscal y           " +
+			        "    on y.cod_empresa        = x.cod_empresa   " +
+			        "   and y.cod_estab          = x.cod_estab     " +
+			        "   and y.data_fiscal        = x.data_fiscal   " +
+			        "   and y.data_emissao       = x.data_emissao  " +
+			        "   and y.movto_e_s          = x.movto_e_s     " +
+			        "   and y.norm_dev           = x.norm_dev      " +
+			        "   and y.ident_fis_jur      = p.ident_fis_jur " +
+			        "   and y.num_docfis         = x.num_docfis    " +
+			        "   and y.serie_docfis       = x.serie_docfis  " +
+			        " inner join msaf.x2024_modelo_docto x2024     " +
+			        "    on x2024.ident_modelo    = y.ident_modelo " +
+			        " inner join msaf.x2005_tipo_docto x2005       " +
+			        "    on x2005.ident_docto     = y.ident_docto  " +
+			        " where x.cod_empresa = ?                      " +
+			        "   and x.cod_estab   = ?                      " +
+			        " order by cod_estab");
 			st.setString(1, pr.getCodEmpresa());
 			st.setString(2, pr.getCodEstab());
 			rs = st.executeQuery();

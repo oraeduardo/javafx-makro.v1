@@ -64,6 +64,21 @@ public class PrimaryKeyChangeFormController implements Initializable {
 
 	@FXML
 	private TextField txtSub_Serie_docfis;
+
+	@FXML
+	private TextField txtCod_class_docfis;
+
+	@FXML
+	private TextField txtCod_docto;
+	
+	@FXML
+	private TextField txtCod_modelo;
+
+	@FXML
+	private TextField txtCod_modelo_cotepe;
+	
+	@FXML
+	private TextField txtNum_autentic_nfe;
 	
 	@FXML
 	private TextField txtCod_empresa_aj;
@@ -281,6 +296,11 @@ public class PrimaryKeyChangeFormController implements Initializable {
 		txtNum_docfis.setText(entity.getNum_docfis());
 		txtSerie_docfis.setText(entity.getSerie_docfis());
 		txtSub_Serie_docfis.setText(entity.getSub_serie_docfis());
+		txtCod_class_docfis.setText(entity.getCod_class_docfis());
+		txtCod_docto.setText(entity.getCod_docto());
+		txtCod_modelo.setText(entity.getCod_modelo());
+		txtCod_modelo_cotepe.setText(entity.getCod_modelo_cotepe());
+		txtNum_autentic_nfe.setText(entity.getNum_autentic_nfe());
 
 		txtCod_empresa_aj.setText(entity.getCod_empresa_aj());
 		txtCod_estab_aj.setText(entity.getCod_estab_aj());

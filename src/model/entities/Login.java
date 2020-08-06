@@ -2,24 +2,24 @@ package model.entities;
 
 public class Login {
 
-	private String user;
+	private String name;
 	private String password;
 
 	public Login() {
 	}
 	
-	public Login(String user, String password) {
+	public Login(String name, String password) {
 		super();
-		this.user = user;
+		this.name = name;
 		this.password = password;
 	}
 
-	public String getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {

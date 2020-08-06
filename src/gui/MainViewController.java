@@ -111,6 +111,7 @@ public class MainViewController implements Initializable, LoggedListener{
 	@Override
 	public void onLogged(Boolean x) {
 		menuItemPrimaryKeyChange.setDisable(!x);
+		menuItemUser.setDisable(!x);
 		menuAbout.setDisable(!x);
 	}
 }
